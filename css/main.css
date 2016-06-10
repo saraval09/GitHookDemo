@@ -1,0 +1,287 @@
+
+/***** The Page ****************/
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0; height: 0;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans'), local('OpenSans'), url('http://themes.googleusercontent.com/static/fonts/opensans/v5/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff') format('woff');
+}
+
+
+body{
+    font-family: ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif;
+    text-transform: uppercase;
+}
+
+/***** The Header ****************/
+
+header, main{
+    width: 960px;
+    margin: 0 auto;
+}
+
+main{
+    background-image: url("../img/bg1.png");
+    padding: 10px;
+}
+
+h1{
+    float: left;
+    font-size: 3em;
+    font-weight: lighter;
+    margin:20px 0 0 10px;
+    color: #cccccc;
+}
+
+strong{
+    color: #931100;
+    font-weight: bold;
+}
+
+#official{
+    float: right;
+    font-weight: lighter;
+    clear:both;
+    color: #cccccc;
+    margin-right: 20px;
+    font-size: 1em;
+}
+
+/***** Navigation Bar ****************/
+
+nav{
+    border-top: 1px solid #dedede;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+nav> ul> li{
+    position: relative;
+    list-style: none;
+    float: left;
+}
+
+nav> ul> li:not(:last-of-type){
+    border-right: solid 1px #cccccc;
+}
+
+nav> ul> li:not(:first-of-type)::after{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 30px;
+    left: -1px;
+    width: 3px;
+    height: 15px;
+    background: #ffffff;
+}
+
+nav> ul> li> a{
+    display: block;
+    padding: 25px;
+    text-decoration: none;
+}
+
+/***** Upcoming Shows ****************/
+
+section> ul> li{
+    list-style: none;
+    padding-top: 5px;
+}
+
+#shows{
+    margin: 10px auto;
+    background-color: rgba(0,0,0, 0.3);
+    border:solid 1px #959595 ;
+    border-radius: 5px;
+    box-shadow: #cccccc 1px 1px 1px inset;
+    padding: 20px;
+    width: 500px;
+    color: #cccccc;
+}
+
+/***** Map ****************/
+h3{
+    color: #931100;
+    font-weight: bold;
+}
+
+h2, address{
+    color: #cccccc;
+    text-align: center;
+}
+
+.map_container {
+    background: url(../img/map.jpg) no-repeat 0 0;
+    height: 325px;
+    width: 760px;
+    position: relative;
+    color: #232323;
+    font-size: 12px;
+    margin:20px auto;
+}
+
+.map_container a.dot {
+    background: url(../img/dots.png) no-repeat 0 0;
+    height: 20px;
+    width: 20px;
+    display: block;
+    position: absolute;
+    cursor: pointer;
+}
+
+.map_container a.dot:hover {
+    background-position: 0 -20px;
+}
+
+.map_container a.dot.selected {
+    background-position: 0 -40px;
+}
+
+.map_container .form_cities {
+    position: absolute;
+    top: 265px;
+    left: 30px;
+}
+
+.map_container .city_info h2 {
+    margin: 0 0 0 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.map_container .city_info h3 {
+    margin: 0 0 12px 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #2c3748;
+}
+.map_container p {
+    margin: 0 0 12px 0;
+}
+
+.map_container a, a:visited {
+    color: #AA0000;
+    margin: 0 10px 0 0;
+}
+
+.map_container .detail_container {
+    position: absolute;
+    top: 35px;
+    left: 480px;
+    width: 240px;
+    height: 260px;
+}
+
+.map_container .city_detail {
+    position: absolute;
+    top: 0;
+    width: 230px;
+    padding: 10px 0 0 12px;
+    border:solid 1px #959595 ;
+    border-radius: 5px;
+    box-shadow: #cccccc 1px 1px 1px inset;
+    background-color: rgba(0,0,0, 0.9);
+}
+
+.map_container .city_detail .city_photo {
+    float: right;
+    margin: 0 15px 0 0;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 3px #4e5d74;
+    -webkit-box-shadow: 0 5px 3px #4e5d74;
+    -moz-box-shadow: 0 5px 3px #4e5d74;
+    -webkit-border-radius: 8px;
+}
+.map_container .city_detail .city_info {
+    width: 130px;
+    float: left;
+}
+
+.city_detail_container {
+    display: none;
+    background-color: rgba(0,0,0, 0.3);
+    color: #00003f;
+}
+
+.city_detail_container .city_detail {
+    width: 300px;
+    background-color: rgba(0,0,0, 0.3);
+    border: 1px solid #2e2e2e;
+    color: #00003f;
+}
+
+/***** Updates ****************/
+
+#updates> ul> li{
+    padding: 5px;
+}
+
+#updates> ul> li:before {
+    content: "\2713";
+    color: #931100;
+}
+
+#updates{
+    margin: 0 auto;
+    border:solid 1px #959595 ;
+    border-radius: 5px;
+    box-shadow: #cccccc 1px 1px 1px inset;
+    padding: 20px;
+    width: 450px;
+    color: #cccccc;
+    background-color: rgba(0,0,0, 0.3);
+    clear: left;
+
+}
+
+#updates> a{
+    color: #931100;
+}
+
+
+iframe{
+    margin: 50px 150px;
+}
+
+audio{
+    margin: 20px;
+}
+
+/***** Music Videos ****************/
+
+
+/***** Downloads ****************/
+
+p{
+    color: #931100;
+    font-weight: bold;
+}
+
+/***** Footer ****************/
+
+footer{
+    color: #929292;
+    font-family: 'open sans',arial,sans-serif;
+    font-size: .8em;
+    font-weight: 300;
+    margin:20px 10px;
+}
+
+footer> a{
+    display: inline;
+    padding: 5px;
+}
