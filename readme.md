@@ -158,6 +158,4 @@ sites on this server.
 * `git remote add prodServer ssh://YourUserName@IPAddress/var/repos/SiteName.git`
 
 ###Staging
-Follow the steps for "Configure Git Deployment" again to make another server called "Staging". It will be used before
- your code gets pushed to the live server to make sure everything is ready and not broken. Once everything looks
- great on the staging server go ahead and push it to the live server for everyone to see your beautiful site!!
+Follow the steps for "Configure Git Deployment" again to make another server called "Staging". It will be used before your code gets pushed to the live server to make sure everything is ready and not broken. Once everything looks great on the staging server go ahead and push it to the live server for everyone to see your beautiful site!!
