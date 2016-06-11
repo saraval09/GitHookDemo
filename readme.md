@@ -18,9 +18,38 @@ My portfolio from Full Sail University
 
 2.SSH Into The Server
 * Open Terminal
-    * ssh root@YourIpAddress (Ip address was emailed to you)
+    * `ssh root@YourIpAddress` (Ip address was emailed to you)
     * Follow Prompts
 
-3. Create Non-Root User
+3.Create Non-Root User
+* add a new user
+    * `adduser yourUserName`
+    * Follow Prompts
+ * add user to sudo
+    * `adduser yourUserName sudo`
 
+4. End SSH Session
+* `exit`
 
+5. Login as Non-Root User
+* `ssh yourUserName@YourIpAddress`
+* Enter Password
+
+6. Update Package System
+* `sudo apt-get update`
+* Enter Password
+
+7. Upgrade Package System
+* `sudo apt-get upgrade`
+
+8. Update Packages for Newly Installed Version
+*`sudo apt-get update`
+
+9. Update System Level Packages
+* `sudo aptitude update`
+*`sudo aptitude safe-upgrade`
+*`sudo reboot`
+
+10. Install Packages
+    1. Git
+        *
