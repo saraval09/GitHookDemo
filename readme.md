@@ -77,25 +77,35 @@ My portfolio from Full Sail University
 
 5.Put the RSA key on file with github.com so this server is treated as a trusted machine.
 * `less ~/.ssh/id_rsa.pub`
-    * Copy **ALL** of the content
+    * Copy **ALL** of the content from the beginning of the key (ssh) to the end of your email
 * Add new SSH Key to your Github account under the Account Settings.
     * Under Account Settings click the "Add Key" button
     * Enter a server title
     * Paste the RSA file content into the text area marked "Key"
     * Add Key
+6. In the terminal log into your github account
+    * `ssh git@github.com`
+    * Enter the password for the SSH key
+    * It will say that you successfully authenticated
+
 
 ###Apache Install and Cofig
 1.Install Apache 2
 * `sudo apt-get install apache2`
+* Follow Prompts
+* Test Apache by putting your Digital Ocean Ip Address into the URL to see if it works
 
 2.Configure ServerName
 * Restart Server
     * `sudo service apache2 restart`
 * It will fail to restart
-*Configure ServerName
+* Configure ServerName
     * `sudo pico /etc/apache2/conf.d/security`
-        * Add
-            * ServerName localhost
+        * Add in one of the non commented lines
+            * `ServerName localhost`
+            * Press Control X to exit
+            * Save Yes
+            * Enter
     * `sudo service apache2 restart`
     * Should report a successful restart
 
@@ -104,9 +114,50 @@ My portfolio from Full Sail University
     * Uncomment <Directory/>
     * Add
         * `Options FollowSymLinks`
+        * Line under "Deny from all"
+        * Press Control X to exit
+        * Save Yes
+        * Enter
     * `sudo service apache2 restart`
 
 4.Change Permissions to Allow Access
-* `sudo chown -R UserName /var/www`
+* `cd /var/www/` which is where your index file is
+* `sudo chown -R YourUserName /var/www`
+* `pico index.html`
+    * Add something to the title to test that it is working properly
+* Go back to your browser and refresh your IP address to see the changes you did in the index file
 
 
+###Configure Git Deployment
+1.Create Space for Repo on Live Server
+* `sudo mkdir /var/repos/`
+* `sudo chown YourUserName /var/repos`
+    * Changing ownership of the Repos folder to your user instead of the Root user allows for your further
+    manipulation of it’s content without superuser permissions.
+* `cd /var/repos && mkdir SiteName.git && cd SiteName.git`
+* `git init --bare`
+   * A bare git init means this folder will have no source files, only the version control structure of git.
+
+2.Configure Server Post Hook
+* `cd /var/repos/SiteName.git/hooks/`
+* `pico post-receive`
+    * Save the file with the contents below. It separates the working tree and git dir into separate locations.
+        * `#!/bin/sh
+           GIT_WORK_TREE=/var/www git checkout -f`
+* `chmod +x post-receive`
+    * Give permissions to make the hook executable by the server.
+
+3.Configure Local Dev Environment
+* It’s important to have a centralized space for your Projects and Deployments even if you’re not deploying multiple
+sites on this server.
+* Open a new Terminal Window
+* `mkdir ~/Projects`
+* `mkdir ~/Projects/SiteName.com && cd ~/Projects/SiteName.com`
+    * Even if you did not purchase a domain name use a .com or .net etc of what you would like to use. In linux adding a .com to a folder name does not complicate things as it would on your laptop.
+* `git init`
+* `git remote add prodServer ssh://YourUserName@IPAddress/var/repos/SiteName.git`
+
+###Staging
+Follow the steps for "Configure Git Deployment" again to make another server called "Staging". It will be used before
+ your code gets pushed to the live server to make sure everything is ready and not broken. Once everything looks
+ great on the staging server go ahead and push it to the live server for everyone to see your beautiful site!!
