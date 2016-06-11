@@ -3,34 +3,207 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Sara Maneval</title>
-    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
-    <link href="css/main.css" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin" rel="stylesheet">
+    <!--Scripts -->
+    <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+    <script src="js/jquery.bsPhotoGallery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('ul.first').bsPhotoGallery({
+                "classes" : "col-lg-2 col-md-4 col-sm-3 col-xs-4 col-xxs-12",
+                "hasModal" : true
+            });
+        });
+    </script>
+    <script>
+        (function(){
+            "use strict";
+            var clicked = {};
+            function showModal(){
+                var src = $(this).attr('src');
+                var img = '<img src="' + src + '" class="img-responsive"/>';
+                var index = $(this).parent('li').attr('data-index');
+                clicked.prevImg = parseInt(index) - parseInt(1);
+                clicked.nextImg = parseInt(index) + parseInt(1);
+                var html = '';
+                html += img;
+                html += '<div style="height:25px;clear:both;display:block;">';
+                html += '<a class="controls next" href="'+ (clicked.nextImg) + '">next &raquo;</a>';
+                html += '<a class="controls previous" href="' + (clicked.prevImg) + '">&laquo; prev</a>';
+                html += '</div>';
+                $('#myModal').modal();
+                $('#myModal').on('shown.bs.modal', function(){
+                    $('#myModal .modal-body').html(html);
+                    showHideControls();
+                })
+                $('#myModal').on('hidden.bs.modal', function(){
+                    $('#myModal .modal-body').html('');
+                });
+            }
+            function nextPrevHandler(){
+                var index = $(this).attr('href');
+                var src = $('li[data-index="'+index+'"] img').attr('src');
+                $('.modal-body img').attr('src', src);
+                clicked.prevImg = parseInt(index) - 1;
+                clicked.nextImg = parseInt(clicked.prevImg) + 2;
+                if($(this).hasClass('previous')){
+                    $(this).attr('href', clicked.prevImg);
+                    $('a.next').attr('href', clicked.nextImg);
+                }else{
+                    $(this).attr('href', clicked.nextImg);
+                    $('a.previous').attr('href', clicked.prevImg);
+                }
+                showHideControls();
+                return false;
+            }
+            function showHideControls(){
+                var total = ($('li').not('.clearfix').length);
+                if(total === clicked.nextImg){
+                    $('a.next').hide();
+                }else{
+                    $('a.next').show()
+                }
+                if(clicked.prevImg === -1){
+                    $('a.previous').hide();
+                }else{
+                    $('a.previous').show()
+                }
+            }
+            $(document).ready(function(){
+                $(this).on('click', 'a.controls', nextPrevHandler);
+                $('li').not('.clearfix').each(function(i){
+                    $(this).attr('data-index',i);
+                    var img = $(this).find('img');
+                    img.on('click',showModal);
+                });
+            }) //end doc ready
+        })();
+    </script>
+    <!--Links -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" type="image/png" href="img/sm.png"/>
 </head>
 <body>
 <header class="clearfix">
     <h1><strong>Sara</strong></h1>
-    <h1 id="val">Maneval</h1>
+    <h1>Maneval</h1>
     <h2 id="official">Official Website</h2>
 </header>
 <main >
-        <section>
-            <p>
-                Hello!
-                In case you didn't know, my name is Sara Maneval. I was born in Pennsylvania but raised in Montana. When it came time to decide on what career I should strive for I knew right away I wanted to work for Disney. I love computers and Disney so Computer Animation seemed like the ideal degree for me.  It took a couple of colleges to find the right one but, after I found Full Sail University, I knew it was the best decision for me. I was taught the whole pipeline in less than 2 years. I graduated on September 28,2012 with a Bachelors in Computer Animation. My longterm goal is to work at Disney Pixar as a Senior Lighting Artist. As of right now I am a 3D Interior Designer at Medialab 3D Solutions. I am also graduating in November 2016 with my second Bachelors in Web Design and Development!
-                Please feel free to contact me!
-                Cheers!
-                Sara Maneval
-            </p>
-
-        </section>
-
+    <section>
+        <h2>
+            Bio
+        </h2>
+        <p>
+            Hello! <br>
+            In case you didn't know, my name is Sara Maneval. I was born in Pennsylvania but raised in Montana. When it came time to decide on what career I should strive for I knew right away I wanted to work for Disney. I love computers and Disney so Computer Animation seemed like the ideal degree for me.  It took a couple of colleges to find the right one but, after I found Full Sail University, I knew it was the best decision for me. I was taught the whole pipeline in less than 2 years. I graduated on September 28,2012 with a Bachelors in Computer Animation. My longterm goal is to work at Disney Pixar as a Senior Lighting Artist. As of right now I am a 3D Interior Designer at Medialab 3D Solutions. I am also graduating in November 2016 with my second Bachelors in Web Design and Development!<br>
+            Please feel free to contact me!<br>
+            Cheers!<br>
+            Sara Maneval
+        </p>
+    </section>
+    <section>
+        <h2>
+            3D Interiors
+        </h2>
+        <div>
+            <ul class="row">
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img23.jpg">
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img24.jpg">
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img1.jpg">
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img2.jpg">
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img3.jpg">
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img4.jpg">
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img5.jpg">
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img6.jpg">
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img7.jpg">
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img8.jpg">
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img9.jpg">
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img10.jpg">
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img11.jpg">
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img12.jpg">
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img13.jpg">
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img14.jpg">
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img15.jpg">
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img16.jpg">
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img17.jpg">
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img18.jpg">
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img19.jpg">
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img20.jpg">
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img21.jpg">
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                    <img class="img-responsive" src="img/img22.jpg">
+                </li>
+            </ul>
+        </div>
+        <!-- /container -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+    </section>
     <footer>
-        <p>Copyright Sara Maneval &copy; 2016 | Privacy Policy</p>
+        <p>Sara Maneval &copy; 2016</p>
         <a href="https://www.facebook.com/sara.maneval"><img src="img/icon1.png" alt="Facebook" width="32" height="32"></a>
-
         <a href="https://plus.google.com/u/0/103439131626517605135/posts"><img src="img/icon4.png" alt="Google" width="32" height="32"></a>
-
         <a href="https://www.linkedin.com/in/sara-maneval-a9252117"><img src="img/icon5.png" alt="LinkedIn" width="32" height="32"></a>
     </footer>
 </main>
