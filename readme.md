@@ -25,31 +25,31 @@ My portfolio from Full Sail University
 * add a new user
     * `adduser yourUserName`
     * Follow Prompts
- * add user to sudo
+    * add user to sudo
     * `adduser yourUserName sudo`
 
-4. End SSH Session
+4.End SSH Session
 * `exit`
 
-5. Login as Non-Root User
+5.Login as Non-Root User
 * `ssh yourUserName@YourIpAddress`
 * Enter Password
 
-6. Update Package System
+6.Update Package System
 * `sudo apt-get update`
 * Enter Password
 
-7. Upgrade Package System
+7.Upgrade Package System
 * `sudo apt-get upgrade`
 
-8. Update Packages for Newly Installed Version
+8.Update Packages for Newly Installed Version
 *`sudo apt-get update`
 
-9. Update System Level Packages
+9.Update System Level Packages
 * `sudo aptitude update`
 *`sudo aptitude safe-upgrade`
 *`sudo reboot`
 
-10. Install Packages
+10.Install Packages
     1. Git
         *
