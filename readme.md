@@ -132,8 +132,6 @@ My portfolio from Full Sail University
 1.Create Space for Repo on Live Server
 * `sudo mkdir /var/repos/`
 * `sudo chown YourUserName /var/repos`
-    * Changing ownership of the Repos folder to your user instead of the Root user allows for your further
-    manipulation of it’s content without superuser permissions.
 * `cd /var/repos && mkdir SiteName.git && cd SiteName.git`
 * `git init --bare`
    * A bare git init means this folder will have no source files, only the version control structure of git.
@@ -144,6 +142,9 @@ My portfolio from Full Sail University
     * Save the file with the contents below. It separates the working tree and git dir into separate locations.
         * `#!/bin/sh
            GIT_WORK_TREE=/var/www git checkout -f`
+        * Press Control X to exit
+        * Save Yes
+        * Enter
 * `chmod +x post-receive`
     * Give permissions to make the hook executable by the server.
 
@@ -151,11 +152,10 @@ My portfolio from Full Sail University
 * It’s important to have a centralized space for your Projects and Deployments even if you’re not deploying multiple
 sites on this server.
 * Open a new Terminal Window
-* `mkdir ~/Projects`
-* `mkdir ~/Projects/SiteName.com && cd ~/Projects/SiteName.com`
-    * Even if you did not purchase a domain name use a .com or .net etc of what you would like to use. In linux adding a .com to a folder name does not complicate things as it would on your laptop.
+* `mkdir ~/getHookDemo`
+* `mkdir ~/getHookDemo/SiteName.com && cd ~/getHookDemo/SiteName.com`
 * `git init`
-* `git remote add prodServer ssh://YourUserName@IPAddress/var/repos/SiteName.git`
+* `git remote add LiveServer ssh://YourUserName@IPAddress/var/repos/SiteName.git`
 
 ###Staging
-Follow the steps for "Configure Git Deployment" again to make another server called "Staging". It will be used before your code gets pushed to the live server to make sure everything is ready and not broken. Once everything looks great on the staging server go ahead and push it to the live server for everyone to see your beautiful site!!
+Follow the steps for "Configure Local Dev Environment" again to make another server called "Staging". It will be used before your code gets pushed to the live server to make sure everything is ready and not broken. Once everything looks great on the staging server go ahead and push it to the live server for everyone to see your beautiful site!!
