@@ -29,34 +29,34 @@ My portfolio from Full Sail University
     * `adduser yourUserName sudo`
 
 4.End SSH Session
-    * `exit`
+* `exit`
 
 5.Login as Non-Root User
-    * `ssh yourUserName@YourIpAddress`
-    * Enter Password
+* `ssh yourUserName@YourIpAddress`
+* Enter Password
 
 6.Update Package System
-    * `sudo apt-get update`
-    * Enter Password
+* `sudo apt-get update`
+* Enter Password
 
 7.Upgrade Package System
-    * `sudo apt-get upgrade`
-    * Follow Prompts
+* `sudo apt-get upgrade`
+* Follow Prompts
 
 8.Update Packages for Newly Installed Version
-    *`sudo apt-get update`
+*`sudo apt-get update`
 
 9.Update System Level Packages
-    * `sudo aptitude update`
-    *`sudo aptitude safe-upgrade`
-    *Follow Prompts
-    *`sudo reboot`
-    * `ssh yourUserName@YourIpAddress`
-    * Enter Password
+* `sudo aptitude update`
+*`sudo aptitude safe-upgrade`
+*Follow Prompts
+*`sudo reboot`
+* `ssh yourUserName@YourIpAddress`
+* Enter Password
 
 10.Install Packages
-    * Git
-    * Apache
+* Git
+* Apache
 
 ###Git: Install and Config
 1.Install Git
