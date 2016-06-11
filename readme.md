@@ -44,13 +44,13 @@ My portfolio from Full Sail University
 * Follow Prompts
 
 8.Update Packages for Newly Installed Version
-*`sudo apt-get update`
+* `sudo apt-get update`
 
 9.Update System Level Packages
 * `sudo aptitude update`
-*`sudo aptitude safe-upgrade`
-*Follow Prompts
-*`sudo reboot`
+* `sudo aptitude safe-upgrade`
+* Follow Prompts
+* `sudo reboot`
 * `ssh yourUserName@YourIpAddress`
 * Enter Password
 
